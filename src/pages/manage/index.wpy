@@ -1,0 +1,32 @@
+<template>
+	<view>
+	</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class extends wepy.page {
+  data = {};
+
+  components = {};
+
+  methods = {};
+
+  events = {};
+
+  onShareAppMessage() {}
+
+  async onShow() {}
+
+  onLoad() {}
+
+  onUnload() {}
+}
+</script>
+
+<style lang="scss">
+@function rpx($px) {
+  @return $px + rpx;
+}
+</style>

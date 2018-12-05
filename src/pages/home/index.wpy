@@ -1,0 +1,101 @@
+<template>
+	<view class="home-page">
+    <view class="page-banner">
+      <image class="banner-pic" src="" />
+    </view>
+    <view class="page-score">
+
+    </view>
+    <view class="page-introduce">
+      <view class="rules-wrap" wx:for="{{rulesLength}}" wx:key="index" index="index" item="item">
+        <h3 class="rules-item">{{item}}</h3>
+      </view>
+      <view class="bottom-button">前往识别打卡</view>
+    </view>
+	</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class extends wepy.page {
+  data = {
+    rulesLength: ['1', '2', '3', '4', '5']
+  };
+
+  components = {};
+
+  methods = {};
+
+  events = {};
+
+  onShareAppMessage() {}
+
+  async onShow() {}
+
+  onLoad() {}
+
+  onUnload() {}
+}
+</script>
+
+<style lang="scss">
+@function rpx($px) {
+  @return $px + rpx;
+}
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+
+  .page-banner {
+    width: 100%;
+    height: rpx(302);
+    background-color: aqua;
+
+    .banner-pic {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .page-score {
+    width: 100%;
+    height: rpx(600);
+    background-color: beige;
+  }
+  .page-introduce {
+    width: 100%;
+
+    .rules-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      padding: rpx(30);
+      border-radius: rpx(20);
+      background-color: antiquewhite;
+
+      .rules-item {
+        color: grey;
+      }
+    }
+    .bottom-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: rpx(100);
+      width: rpx(450);
+      height: rpx(90);
+      border-radius: 12px;
+      font-size: rpx(36);
+      color: #ff6e57;
+    }
+  }
+}
+</style>

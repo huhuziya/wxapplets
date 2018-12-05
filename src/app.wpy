@@ -1,0 +1,88 @@
+<style lang="less">
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+</style>
+
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/search/index',
+      'pages/home/index',
+      'pages/manage/index',
+      'pages/user/index'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#7A7E83',
+      selectedColor: '#1BA0E1',
+      borderStyle: 'black',
+      backgroundColor: '#ffffff',
+      list: [
+        {
+          pagePath: 'pages/home/index',
+          iconPath: 'image/icon_API.png',
+          selectedIconPath: 'image/icon_API_HL.png',
+          text: '首页'
+        },
+        {
+          pagePath: 'pages/search/index',
+          iconPath: 'image/Face.png',
+          selectedIconPath: 'image/Face_HL.png',
+          text: '图像识别'
+        },
+        {
+          pagePath: 'pages/manage/index',
+          iconPath: 'image/image.png',
+          selectedIconPath: 'image/image_HL.png',
+          text: '历史打卡'
+        },
+        {
+          pagePath: 'pages/user/index',
+          iconPath: 'image/OCR.png',
+          selectedIconPath: 'image/OCR_HL.png',
+          text: '我的'
+        }
+      ]
+    }
+  };
+
+  globalData = {
+    userInfo: null
+  };
+
+  constructor() {
+    super();
+    this.use('requestfix');
+  }
+
+  onLaunch() {}
+
+  getUserInfo(cb) {
+    const that = this;
+    if (this.globalData.userInfo) {
+      return this.globalData.userInfo;
+    }
+    wepy.getUserInfo({
+      success(res) {
+        that.globalData.userInfo = res.userInfo;
+        cb && cb(res.userInfo);
+      }
+    });
+  }
+}
+</script>
